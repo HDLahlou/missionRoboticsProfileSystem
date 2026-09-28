@@ -1,0 +1,40 @@
+# =============================================================================
+# SAFETY LIMITS: Unitree G1 humanoid
+# =============================================================================
+# WHAT THIS FILE IS
+#   Hard limits that NO profile may exceed. The tool checks every setting
+#   against these rules and REFUSES to run if any value is out of range (or,
+#   with --clamp, forces it back to the limit).
+#
+# BEST EDITING PRACTICES: PLEASE READ
+#   * These are CONSERVATIVE STARTER VALUES written without access to your
+#     robot. Have someone experienced with this humanoid review them, then fill
+#     in the 'review' block.
+#   * A falling humanoid is dangerous to people and expensive to repair. Always
+#     test new settings with the robot hanging from a gantry or harness (a hoist
+#     that catches it if it falls).
+#   * LOW-LEVEL CONTROL (sending commands straight to every joint) is
+#     deliberately NOT allowed below. It means switching off the robot's
+#     built-in balance software. Only add `low_level` to the allowed list after
+#     a documented safety review.
+#   * Rule format: path, then any of `min`, `max`, `allowed`. A single number
+#     applies to every entry of a list; a list gives one limit per entry.
+#
+# Acronyms: m/s = metres per second; rad/s = radians per second (a turning
+# speed; about 57 degrees per second); Kp = stiffness gain (how hard a joint
+# pulls toward its target); Kd = damping gain (how much it resists fast motion).
+# =============================================================================
+schema_version: 1
+
+review:
+  reviewed_by: FILL_ME_IN      # Name of the person who checked these limits
+  reviewed_on: FILL_ME_IN      # Date, YYYY-MM-DD
+
+limits:
+  settings.control.mode:                      {allowed: [high_level]}   # Add low_level ONLY after a safety review
+  settings.locomotion.max_forward_speed_m_s:  {min: 0.0, max: 0.4}
+  settings.locomotion.max_lateral_speed_m_s:  {min: 0.0, max: 0.3}
+  settings.locomotion.max_turn_rate_rad_s:    {min: 0.0, max: 0.5}
+  settings.gains.kp_scale:                    {min: 0.0, max: 1.0}      # Multiplier on your control loop's nominal Kp
+  settings.gains.kd_scale:                    {min: 0.0, max: 1.0}
+  settings.policy.action_scale:               {min: 0.0, max: 0.5}      # How strongly a trained policy's outputs are applied

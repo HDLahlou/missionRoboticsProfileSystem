@@ -1,0 +1,22 @@
+# =============================================================================
+# EXAMPLE USER PROFILE: SO-101 arms
+# =============================================================================
+# A personal set of experiment settings. Copy it (or run
+# `./scripts/rp new-profile so101 <your_name>`) and edit YOUR copy.
+# Only list values you want to CHANGE; the rest comes from robots/so101/base.yaml.
+# Never add 'hardware' or 'safety' sections (they are rejected).
+# =============================================================================
+robot: so101
+
+profile:
+  name: example_user
+  owner: Example User             # Replace with your name
+  description: Smoother recording with slightly smaller steps.
+
+settings:
+  motors:
+    max_relative_target: 6
+  teleop:
+    fps: 30
+  policy:
+    checkpoint: checkpoints/so101/act_pick_v1.pt   # Example path; this file does not exist yet

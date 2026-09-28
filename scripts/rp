@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+# Short command for the profile tool:  ./scripts/rp <command> ...
+# Works from any folder. Run `./scripts/rp --help` for the command list.
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+PYTHONPATH="$ROOT${PYTHONPATH:+:$PYTHONPATH}" exec python3 -m robotprofiles "$@"

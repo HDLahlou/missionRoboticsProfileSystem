@@ -1,0 +1,28 @@
+# =============================================================================
+# SAFETY LIMITS: Trossen Robotics arm
+# =============================================================================
+# WHAT THIS FILE IS
+#   Hard limits that NO profile may exceed. The tool checks every setting
+#   against these rules and REFUSES to run if any value is out of range (or,
+#   with --clamp, forces it back to the limit).
+#
+# BEST EDITING PRACTICES: PLEASE READ
+#   * These are CONSERVATIVE STARTER VALUES written without access to your
+#     arm. Have someone who knows it review them and fill in 'review'.
+#   * `effort` mode (commanding raw motor forces) is deliberately NOT allowed.
+#     Add it only after a documented safety review.
+#   * `goal_time_s` is how long a move takes. A LOWER minimum means FASTER,
+#     jerkier moves, so the limit is a minimum, not a maximum.
+#   * Rule format: path, then any of `min`, `max`, `allowed`.
+# =============================================================================
+schema_version: 1
+
+review:
+  reviewed_by: FILL_ME_IN      # Name of the person who checked these limits
+  reviewed_on: FILL_ME_IN      # Date, YYYY-MM-DD
+
+limits:
+  settings.control.mode:        {allowed: [position, velocity]}   # Add effort ONLY after a safety review
+  settings.speed_scale:         {min: 0.0, max: 0.5}              # 1.0 = full speed
+  settings.motion.goal_time_s:  {min: 1.0, max: 30.0}             # Seconds a move takes; keep >= 1.0 for gentle motion
+  settings.gains.kp_scale:      {min: 0.0, max: 1.0}

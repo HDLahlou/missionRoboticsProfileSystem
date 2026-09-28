@@ -1,0 +1,28 @@
+# =============================================================================
+# BASE SETTINGS: Unitree G1 humanoid
+# =============================================================================
+# WHAT THIS FILE IS
+#   Shared, gentle DEFAULT experiment settings. Every profile starts from these
+#   and only lists what it wants to change.
+#
+# BEST EDITING PRACTICES
+#   * Keep defaults slow and safe: they are what a new user gets.
+#   * Edit here only when the whole team agrees. Personal preferences go in
+#     your own profile.
+#   * Every value must stay inside the limits in safety.yaml.
+#   * "Nominal" gains mean whatever your control code treats as normal; the
+#     scale values below multiply them (1.0 = unchanged, 0.5 = half).
+# =============================================================================
+settings:
+  control:
+    mode: high_level          # Built-in walking/balance software stays in charge
+  locomotion:
+    max_forward_speed_m_s: 0.2
+    max_lateral_speed_m_s: 0.1
+    max_turn_rate_rad_s: 0.2
+  gains:
+    kp_scale: 0.5
+    kd_scale: 0.5
+  policy:
+    checkpoint: null          # Path to a trained model file, or null for none
+    action_scale: 0.25

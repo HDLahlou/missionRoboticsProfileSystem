@@ -1,0 +1,28 @@
+# =============================================================================
+# EXAMPLE USER PROFILE: Franka arm
+# =============================================================================
+# WHAT THIS FILE IS
+#   A personal set of experiment settings. Copy it (or run
+#   `./scripts/rp new-profile franka <your_name>`) and edit YOUR copy.
+#
+# BEST EDITING PRACTICES
+#   * Only list values you want to CHANGE. Everything else is inherited from
+#     robots/franka/base.yaml, so your file stays short and easy to review.
+#   * Do not add 'hardware' or 'safety' sections. They are shared and will be
+#     rejected with an error.
+#   * Commit your profile to Git after each meaningful change so you can go back.
+#   * One profile per person or per experiment, e.g. alex_pick_and_place.
+# =============================================================================
+robot: franka                     # Must match the folder this file lives in
+
+profile:
+  name: example_user
+  owner: Example User             # Replace with your name
+  description: Slow pick-and-place testing with a slightly softer arm.
+
+settings:
+  speed_scale: 0.3
+  controller:
+    cartesian_stiffness: [250, 250, 250, 25, 25, 25]
+  policy:
+    checkpoint: checkpoints/franka/pick_v3.pt   # Example path; this file does not exist yet

@@ -1,0 +1,9 @@
+# Needed for the profile tools themselves:
+PyYAML>=6.0
+
+# Robot-specific libraries are ONLY needed on the computer that talks to that
+# robot. Install just the ones you use (names/versions change; check vendor docs):
+#   Franka  : panda-py            (community Python wrapper around libfranka)
+#   G1      : unitree_sdk2_python (from Unitree's GitHub)
+#   SO-101  : lerobot             (Hugging Face)
+#   Trossen : trossen-arm         (Trossen's Python driver)

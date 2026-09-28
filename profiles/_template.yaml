@@ -1,0 +1,16 @@
+# =============================================================================
+# PROFILE TEMPLATE (used by `./scripts/rp new-profile`)
+# =============================================================================
+# A profile holds ONE person's or ONE experiment's settings for ONE robot.
+#   * Only list values you want to CHANGE from the shared base settings.
+#   * Never add 'hardware' or 'safety' sections. Shared files own those.
+#   * Commit your profile to Git after each meaningful change.
+# =============================================================================
+robot: ROBOT_NAME
+
+profile:
+  name: PROFILE_NAME
+  owner: OWNER_NAME
+  description: What this profile is for
+
+settings:

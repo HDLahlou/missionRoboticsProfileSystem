@@ -1,0 +1,41 @@
+# =============================================================================
+# HARDWARE FACTS: Franka arm
+# =============================================================================
+# WHAT THIS FILE IS
+#   Physical facts about THIS specific robot: its network address, the tool
+#   bolted to its flange (the metal plate at the end of the arm), and so on.
+#   These describe the machine itself, not anyone's preferences.
+#
+# BEST EDITING PRACTICES: PLEASE READ
+#   * DO NOT edit these values to suit an experiment. Personal tweaks belong in
+#     your own profile under profiles/franka/.
+#   * Change a value here ONLY when the physical robot changed (new tool,
+#     new network address, arm moved to another network...).
+#   * Every change needs (1) an entry in robots/HARDWARE_CHANGELOG.md and
+#     (2) a review by a second person (see .github/CODEOWNERS).
+#   * Values marked FILL_ME_IN are unknown. Run `./scripts/rp setup franka`
+#     and you will be prompted for each one. Real (non-dry-run) use is refused
+#     while any FILL_ME_IN remains.
+#
+# Acronyms: IP = Internet Protocol (a network address); TCP = tool center point
+# (the "working point" of the tool, e.g. between the fingertips).
+# =============================================================================
+schema_version: 1
+
+robot_id: FILL_ME_IN            # A short unique name for this arm, e.g. "franka_lab_01"
+model: FILL_ME_IN               # "FR3" (Franka Research 3) or "Panda" (older model)
+
+network:
+  robot_ip: FILL_ME_IN          # IP address of the arm's control box, e.g. 172.16.0.2 (check your network setup)
+
+payload_max_kg: 3.0             # Manufacturer's maximum payload. Verify against your model's datasheet.
+
+tool:
+  name: FILL_ME_IN              # e.g. "franka_hand" or the name of your custom gripper
+  mass_kg: FILL_ME_IN           # Weight of everything mounted past the flange, in kg. Wrong values cause drift and false collision stops.
+  center_of_mass_m: FILL_ME_IN  # [x, y, z] in metres, measured from the flange, e.g. [0.0, 0.0, 0.03]
+  inertia_kg_m2: FILL_ME_IN     # 9 numbers (3x3 matrix, row by row). Get from CAD data or the vendor; do not guess.
+  flange_to_tcp_transform: FILL_ME_IN  # 16 numbers (4x4 matrix, column-major): where the tool's working point sits relative to the flange. Desk shows the value for the standard Franka Hand.
+
+cameras:
+  wrist_camera_serial: FILL_ME_IN  # Serial number of the wrist camera, or "none"

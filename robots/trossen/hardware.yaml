@@ -1,0 +1,39 @@
+# =============================================================================
+# HARDWARE FACTS: Trossen Robotics arm
+# =============================================================================
+# WHAT THIS FILE IS
+#   Physical facts about THIS specific Trossen arm: model, end effector (the
+#   gripper or tool), and network address. These describe the machine, not
+#   anyone's preferences.
+#
+# BEST EDITING PRACTICES: PLEASE READ
+#   * DO NOT edit these values to suit an experiment. Personal tweaks belong in
+#     your own profile under profiles/trossen/.
+#   * Change a value here ONLY when the physical arm changed (different
+#     gripper, new network address, firmware update...).
+#   * Every change needs (1) an entry in robots/HARDWARE_CHANGELOG.md and
+#     (2) a review by a second person (see .github/CODEOWNERS).
+#   * Several Trossen generations exist (older WidowX/ViperX with Dynamixel
+#     motors, newer Trossen AI arms with a different driver). Confirm which one
+#     you have. This template targets the newer driver (`trossen_arm`).
+#   * Values marked FILL_ME_IN are unknown. Run `./scripts/rp setup trossen`.
+#     Real (non-dry-run) use is refused while any FILL_ME_IN remains.
+#
+# Acronyms: IP = Internet Protocol (a network address); Dynamixel = a brand of
+# smart servo motor used in older Trossen arms.
+# =============================================================================
+schema_version: 1
+
+robot_id: FILL_ME_IN             # A short unique name, e.g. "trossen_left_01"
+model: FILL_ME_IN                # Model name exactly as the trossen_arm library spells it, e.g. wxai_v0
+end_effector: FILL_ME_IN         # End effector name as the library spells it, e.g. wxai_v0_follower or wxai_v0_leader
+role: FILL_ME_IN                 # "leader" (moved by hand), "follower" (copies the leader), or "standalone"
+
+network:
+  ip_address: FILL_ME_IN         # The arm's IP address. Vendors often ship a default; check your documentation.
+
+firmware_version: FILL_ME_IN     # Driver and firmware versions must match; record them here
+
+payload_max_kg: FILL_ME_IN       # Manufacturer's maximum payload for your model
+
+cameras: FILL_ME_IN              # Cameras attached, e.g. {wrist: serial-number}. Use {} if none.

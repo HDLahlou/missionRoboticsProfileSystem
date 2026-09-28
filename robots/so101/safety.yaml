@@ -1,0 +1,29 @@
+# =============================================================================
+# SAFETY LIMITS: SO-101 arms
+# =============================================================================
+# WHAT THIS FILE IS
+#   Hard limits that NO profile may exceed. The tool checks every setting
+#   against these rules and REFUSES to run if any value is out of range (or,
+#   with --clamp, forces it back to the limit).
+#
+# BEST EDITING PRACTICES: PLEASE READ
+#   * These are CONSERVATIVE STARTER VALUES written without access to your
+#     hardware. Have someone who has run this arm review them and fill in the
+#     'review' block.
+#   * The SO-101 has no torque sensing and cheap servos can overheat or strip
+#     gears. Keep motions gentle.
+#   * Rule format: path, then any of `min`, `max`, `allowed`.
+#
+# Acronyms: fps = frames (control steps) per second; P coefficient = the
+# proportional gain, i.e. how hard a servo pulls toward its target position.
+# =============================================================================
+schema_version: 1
+
+review:
+  reviewed_by: FILL_ME_IN      # Name of the person who checked these limits
+  reviewed_on: FILL_ME_IN      # Date, YYYY-MM-DD
+
+limits:
+  settings.motors.max_relative_target:  {min: 1, max: 20}   # Largest move allowed per control step. Lower = gentler. Check the units in your LeRobot version.
+  settings.motors.p_coefficient:        {min: 1, max: 32}   # Servo stiffness. Higher can cause shaking and overheating.
+  settings.teleop.fps:                  {min: 10, max: 60}

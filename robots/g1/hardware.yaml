@@ -1,0 +1,37 @@
+# =============================================================================
+# HARDWARE FACTS: Unitree G1 humanoid
+# =============================================================================
+# WHAT THIS FILE IS
+#   Physical facts about THIS specific robot and how your computer reaches it.
+#   These describe the machine, not anyone's preferences.
+#
+# BEST EDITING PRACTICES: PLEASE READ
+#   * DO NOT edit these values to suit an experiment. Personal tweaks belong in
+#     your own profile under profiles/g1/.
+#   * Change a value here ONLY when the physical robot or its network set-up
+#     changed (firmware update, new hands, different computer or cable...).
+#   * Every change needs (1) an entry in robots/HARDWARE_CHANGELOG.md and
+#     (2) a review by a second person (see .github/CODEOWNERS).
+#   * Values marked FILL_ME_IN are unknown. Run `./scripts/rp setup g1` and you
+#     will be prompted for each one. Real (non-dry-run) use is refused while any
+#     FILL_ME_IN remains.
+#
+# Acronyms: EDU = Education model (the version Unitree allows you to program);
+# IP = Internet Protocol (a network address); DDS = Data Distribution Service
+# (the messaging system the robot uses to talk to your computer).
+# =============================================================================
+schema_version: 1
+
+robot_id: FILL_ME_IN            # A short unique name, e.g. "g1_lab_01"
+variant: FILL_ME_IN             # "EDU" or "base". Only the EDU model supports the programming interface.
+firmware_version: FILL_ME_IN    # Shown in the Unitree app or on the robot; changes can alter behaviour
+
+network:
+  interface: FILL_ME_IN         # Name of the network port ON YOUR COMPUTER wired to the robot, e.g. "eth0" or "enp3s0" (list with `ip link` on Linux)
+  robot_ip: FILL_ME_IN          # IP address of the robot's computer. Unitree documents a 192.168.123.x range; confirm the exact address in their docs.
+
+hands:
+  type: FILL_ME_IN              # "none", or the model of dexterous hands fitted
+
+compute:
+  onboard_computer: FILL_ME_IN  # e.g. the name of the onboard Jetson computer, or "none" if you only use an external computer

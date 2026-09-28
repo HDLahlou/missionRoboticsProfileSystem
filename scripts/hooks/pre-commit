@@ -1,0 +1,21 @@
+#!/usr/bin/env sh
+# Git "pre-commit" hook: runs automatically just before every commit.
+#
+# Rule: if a hardware.yaml or safety.yaml file is part of the commit, the
+# hardware changelog must be part of the same commit. This forces a written
+# record of WHO changed WHAT and WHY for the shared, protected files.
+#
+# Install once per clone with:  ./scripts/install_hooks.sh
+
+changed="$(git diff --cached --name-only)"
+
+if echo "$changed" | grep -Eq '^robots/[^/]+/(hardware|safety)\.yaml$'; then
+  if ! echo "$changed" | grep -q '^robots/HARDWARE_CHANGELOG.md$'; then
+    echo "Commit blocked: you changed a hardware.yaml or safety.yaml file."
+    echo "These files are shared and protected. Add an entry to"
+    echo "robots/HARDWARE_CHANGELOG.md (who, what, why, reviewer), stage it with"
+    echo "'git add robots/HARDWARE_CHANGELOG.md', and commit again."
+    exit 1
+  fi
+fi
+exit 0

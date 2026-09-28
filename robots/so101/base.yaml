@@ -1,0 +1,21 @@
+# =============================================================================
+# BASE SETTINGS: SO-101 arms
+# =============================================================================
+# WHAT THIS FILE IS
+#   Shared, gentle DEFAULT experiment settings. Every profile starts from these
+#   and only lists what it wants to change.
+#
+# BEST EDITING PRACTICES
+#   * Keep defaults gentle: they are what a new user gets.
+#   * Edit here only when the whole team agrees. Personal preferences go in
+#     your own profile.
+#   * Every value must stay inside the limits in safety.yaml.
+# =============================================================================
+settings:
+  motors:
+    max_relative_target: 10
+    p_coefficient: 16
+  teleop:
+    fps: 30
+  policy:
+    checkpoint: null          # Path to a trained model file, or null for none

@@ -1,0 +1,41 @@
+# =============================================================================
+# SAFETY LIMITS: Franka arm
+# =============================================================================
+# WHAT THIS FILE IS
+#   Hard limits that NO profile is allowed to exceed. When you apply a profile,
+#   the tool checks every setting against these rules and REFUSES to run if any
+#   value is out of range (or, with --clamp, forces it back to the limit).
+#
+# BEST EDITING PRACTICES: PLEASE READ
+#   * The numbers below are CONSERVATIVE STARTER VALUES written without access
+#     to your robot. They must be reviewed by someone who knows this arm before
+#     real use. Fill in the 'review' block below once that has happened.
+#   * Never loosen a limit to make one experiment work. If you truly need a
+#     higher limit, ask a robot lead, get sign-off, and log it in
+#     robots/HARDWARE_CHANGELOG.md.
+#   * Rule format: the setting's path, then any of:
+#         min: <number or list>      lowest allowed value
+#         max: <number or list>      highest allowed value
+#         allowed: [a, b, c]         only these exact values are allowed
+#     A single number applies to every entry of a list setting; a list gives one
+#     limit per entry (e.g. one per joint).
+#
+# Acronyms: Nm = Newton-metres (a unit of twisting force, "torque"); N = Newtons
+# (a unit of pushing force).
+# =============================================================================
+schema_version: 1
+
+review:
+  reviewed_by: FILL_ME_IN      # Name of the person who checked these limits
+  reviewed_on: FILL_ME_IN      # Date, YYYY-MM-DD
+
+limits:
+  settings.speed_scale:                     {min: 0.0, max: 0.5}   # 1.0 = the robot's full speed. 0.5 = half.
+  settings.controller.type:                 {allowed: [joint_impedance, cartesian_impedance]}  # Add "torque" only after review
+  settings.controller.joint_stiffness:      {min: 0, max: [600, 600, 600, 600, 250, 150, 50]}  # One per joint (7). Higher = stiffer, less forgiving.
+  settings.controller.cartesian_stiffness:  {min: 0, max: [1000, 1000, 1000, 100, 100, 100]}   # x, y, z (N/m) then three rotations (Nm/rad)
+  settings.controller.damping_ratio:        {min: 0.3, max: 1.5}
+  settings.collision.torque_threshold_nm:   {min: 5.0, max: 30.0}  # HIGHER = the arm tolerates harder bumps before stopping = LESS safe
+  settings.collision.force_threshold_n:     {min: 5.0, max: 30.0}
+  settings.gripper.force_n:                 {min: 0, max: 40}
+  settings.gripper.speed_m_s:               {min: 0, max: 0.1}

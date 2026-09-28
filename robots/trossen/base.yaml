@@ -1,0 +1,23 @@
+# =============================================================================
+# BASE SETTINGS: Trossen Robotics arm
+# =============================================================================
+# WHAT THIS FILE IS
+#   Shared, gentle DEFAULT experiment settings. Every profile starts from these
+#   and only lists what it wants to change.
+#
+# BEST EDITING PRACTICES
+#   * Keep defaults gentle: they are what a new user gets.
+#   * Edit here only when the whole team agrees. Personal preferences go in
+#     your own profile.
+#   * Every value must stay inside the limits in safety.yaml.
+# =============================================================================
+settings:
+  control:
+    mode: position
+  speed_scale: 0.2
+  motion:
+    goal_time_s: 3.0           # Seconds each move takes
+  gains:
+    kp_scale: 0.5              # Multiplier on your control code's nominal stiffness
+  policy:
+    checkpoint: null           # Path to a trained model file, or null for none

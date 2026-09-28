@@ -1,0 +1,28 @@
+# =============================================================================
+# BASE SETTINGS: Franka arm
+# =============================================================================
+# WHAT THIS FILE IS
+#   The shared, gentle DEFAULT experiment settings. Every profile starts from
+#   these values and only lists what it wants to change.
+#
+# BEST EDITING PRACTICES
+#   * Keep these defaults slow, soft, and safe: they are what a new user gets.
+#   * Edit here only when the whole team agrees the default should change.
+#     Personal preferences go in your own profile instead.
+#   * Every value must stay inside the limits in safety.yaml.
+# =============================================================================
+settings:
+  speed_scale: 0.2                 # Fraction of full speed
+  controller:
+    type: cartesian_impedance      # Behaves like a soft spring in x/y/z space
+    joint_stiffness: [200, 200, 200, 200, 100, 50, 20]
+    cartesian_stiffness: [300, 300, 300, 30, 30, 30]
+    damping_ratio: 1.0
+  collision:
+    torque_threshold_nm: 20.0
+    force_threshold_n: 20.0
+  gripper:
+    force_n: 20
+    speed_m_s: 0.05
+  policy:
+    checkpoint: null               # Path to a trained model file, or null for none

@@ -1,0 +1,52 @@
+# =============================================================================
+# HARDWARE FACTS: SO-101 leader and follower arms
+# =============================================================================
+# WHAT THIS FILE IS
+#   Physical facts about this SO-101 pair: USB ports, calibration files, motor
+#   numbering, cameras. These describe the machines, not anyone's preferences.
+#
+# BEST EDITING PRACTICES: PLEASE READ
+#   * DO NOT edit these values to suit an experiment. Personal tweaks belong in
+#     your own profile under profiles/so101/.
+#   * CALIBRATION IS A SHARED HARDWARE FACT. Calibration teaches the software
+#     where each joint's zero position is. If anyone recalibrates, every
+#     recorded dataset and trained policy made with the old calibration may no
+#     longer line up with the arm. The 'calibration_sha256' fingerprints below
+#     let this tool WARN you when a calibration file has silently changed.
+#   * After a deliberate recalibration: recompute the fingerprint
+#     (`./scripts/rp snapshot so101`), update it here, and log it in
+#     robots/HARDWARE_CHANGELOG.md with a reviewer.
+#   * Values marked FILL_ME_IN are unknown. Run `./scripts/rp setup so101`.
+#     Real (non-dry-run) use is refused while any FILL_ME_IN remains.
+#
+# Acronyms: USB = Universal Serial Bus; SHA-256 = a method that turns a file into
+# a short "fingerprint"; if the file changes even slightly, the fingerprint
+# changes; LeRobot = Hugging Face's open-source robot learning toolkit.
+# =============================================================================
+schema_version: 1
+
+robot_id: FILL_ME_IN             # A short unique name, e.g. "so101_bench_01"
+
+motor_type: Feetech STS3215      # The servo motors used in the SO-101
+
+follower:
+  lerobot_id: FILL_ME_IN         # The id you pass to LeRobot commands for the follower arm
+  port: FILL_ME_IN               # Serial port. Prefer a stable path such as /dev/serial/by-id/usb-... (Linux), because /dev/ttyACM0 can change when cables are re-plugged.
+  calibration_file: FILL_ME_IN   # Full path to the follower's calibration .json file. LeRobot usually stores these under ~/.cache/huggingface/lerobot/calibration/ (verify for your version).
+  calibration_sha256: FILL_ME_IN # Fingerprint of that file. Run `./scripts/rp snapshot so101` to compute it, then paste here.
+
+leader:
+  lerobot_id: FILL_ME_IN
+  port: FILL_ME_IN
+  calibration_file: FILL_ME_IN
+  calibration_sha256: FILL_ME_IN
+
+motor_ids:                       # LeRobot's usual numbering. Verify against your assembly.
+  shoulder_pan: 1
+  shoulder_lift: 2
+  elbow_flex: 3
+  wrist_flex: 4
+  wrist_roll: 5
+  gripper: 6
+
+cameras: FILL_ME_IN              # Cameras attached, e.g. {front: /dev/video0, wrist: /dev/video2}. Use {} if none.

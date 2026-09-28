@@ -1,0 +1,20 @@
+# =============================================================================
+# EXAMPLE USER PROFILE: Unitree G1 humanoid
+# =============================================================================
+# A personal set of experiment settings. Copy it (or run
+# `./scripts/rp new-profile g1 <your_name>`) and edit YOUR copy.
+# Only list values you want to CHANGE; the rest comes from robots/g1/base.yaml.
+# Never add 'hardware' or 'safety' sections (they are rejected).
+# =============================================================================
+robot: g1
+
+profile:
+  name: example_user
+  owner: Example User             # Replace with your name
+  description: Slightly faster walking tests, robot on the gantry.
+
+settings:
+  locomotion:
+    max_forward_speed_m_s: 0.3
+  policy:
+    checkpoint: checkpoints/g1/walk_v2.pt   # Example path; this file does not exist yet

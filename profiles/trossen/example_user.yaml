@@ -1,0 +1,21 @@
+# =============================================================================
+# EXAMPLE USER PROFILE: Trossen Robotics arm
+# =============================================================================
+# A personal set of experiment settings. Copy it (or run
+# `./scripts/rp new-profile trossen <your_name>`) and edit YOUR copy.
+# Only list values you want to CHANGE; the rest comes from robots/trossen/base.yaml.
+# Never add 'hardware' or 'safety' sections (they are rejected).
+# =============================================================================
+robot: trossen
+
+profile:
+  name: example_user
+  owner: Example User             # Replace with your name
+  description: Faster teleoperation-style moves for data collection.
+
+settings:
+  speed_scale: 0.4
+  motion:
+    goal_time_s: 1.5
+  policy:
+    checkpoint: checkpoints/trossen/act_bimanual_v1.pt   # Example path; this file does not exist yet
